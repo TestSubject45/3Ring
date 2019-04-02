@@ -1,9 +1,8 @@
-import gui
-import funcs
+from gui import *
 
 
-# app = wx.App()
-# myFrame = mainFrame(None,title='Hello World!')
-# myFrame.Show()
+app = wx.App()
+myFrame = mainFrame(None,title='Hello World!')
+myFrame.Show()
 
-# app.MainLoop()
+app.MainLoop()
