@@ -1,8 +1,10 @@
-from gui import *
+print("Loading source files...")
+from gui_main import *
+print("Finished loading source files.")
 
 
-app = wx.App()
-myFrame = mainFrame(None,title='Hello World!')
-myFrame.Show()
+if __name__== '__main__':
+	app = QApplication(sys.argv)
+	dashboard = Dashboard()
 
-app.MainLoop()
+	sys.exit(app.exec_())
