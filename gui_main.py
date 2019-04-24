@@ -10,7 +10,7 @@ class MainWindow(QMainWindow):
 
 	def changePage(self,index):
 		self.stack.setCurrentIndex(index)
-		print("Changing to " + index)
+		print("Changing to",index)
 
 	def __init__(self):
 		super().__init__()
@@ -31,7 +31,9 @@ class MainWindow(QMainWindow):
 		self.stack.addWidget(dashboard)
 		self.stack.addWidget(characters)
 
+
 		self.show()
+		self.stack.setCurrentIndex(1)
 
 	def InitMenu(self):
 		mainMenu = self.menuBar()
@@ -41,6 +43,14 @@ class MainWindow(QMainWindow):
 		searchMenu = mainMenu.addMenu('Search')
 		toolsMenu = mainMenu.addMenu('Tools')
 		pagesMenu = mainMenu.addMenu('Pages')
+
+		exitButton = QAction(QIcon('exit24.png'), 'Exit', self)
+		exitButton.triggered.connect(self.close)
+		fileMenu.addAction(exitButton)
+
+		dashboardButton = QAction(QIcon('exit24.png'), 'Dashboard', self)
+		dashboardButton.triggered.connect(lambda: self.changePage(0))
+		pagesMenu.addAction(dashboardButton)
 
 		charactersButton = QAction(QIcon('exit24.png'), 'Characters', self)
 		charactersButton.triggered.connect(lambda: self.changePage(1))
