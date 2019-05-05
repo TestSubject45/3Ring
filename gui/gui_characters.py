@@ -28,9 +28,9 @@ class Characters(QWidget):
         character_name.setAlignment(Qt.AlignCenter)
         character_name.resize(50,50)
 
-        world_heading = QLabel(self)
-        world_heading.setText('<p style="font-size:36px;font-family:cursive;">Racen</p>')
-        world_heading.setAlignment(Qt.AlignCenter)
+        # world_heading = QLabel(self)
+        # world_heading.setText('<p style="font-size:36px;font-family:cursive;">Racen</p>')
+        # world_heading.setAlignment(Qt.AlignCenter)
         
         textBox = QTextEdit(self)
         textBox.resize(20,40)

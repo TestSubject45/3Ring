@@ -1,18 +1,29 @@
 print("  Loading Dashboard")
 import sys
+sys.path.append('..')
+from config import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+from funcs import *
 
 
 
 class Dashboard(QWidget):
+
+    def refresh(self):
+        x = 1
+
+    def newPageHelper(self):
+        content = self.newEntryBox.toPlainText()
+        title = self.newPageTitle.text()
+        noun = self.comboBox.currentText()
+        print(noun)
+        newPage(self,content,title,noun)
+
     def __init__(self):
         super().__init__()
-        self.buttonList = ['Characters','Items','Locations','Concepts','Events','','','']
-        #I is the number of rows, J is the number or columns
-        self.positionList = [(1,1),(1,2),(1,3),(1,4)]
-
+        self.name = "Dashboard"
 
         self.InitUI() 
 
@@ -31,22 +42,21 @@ class Dashboard(QWidget):
         world_heading = QLabel(self)
         world_heading.setText('<p style="font-size:36px;font-family:cursive;">Racen</p>')
         world_heading.setAlignment(Qt.AlignCenter)
-        newEntryBox = QTextEdit(self)
-        newEntryBox.resize(500,200)
+        self.newEntryBox = QTextEdit(self)
+        self.newEntryBox.resize(500,200)
+        self.newPageTitle = QLineEdit(self)
         submitButton = QPushButton("Submit")
+        submitButton.clicked.connect(lambda: self.newPageHelper())
+        self.comboBox = QComboBox(self)
 
-
-        #Loop through list and add buttons to grid
-        for position, name in zip(self.positionList, self.buttonList):
-            if(name)=='':
-                continue
-            button = QPushButton(name)
-
-            grid.addWidget(button,*position)
+        for item in nounList[1:len(nounList)]:
+            self.comboBox.addItem(item)
 
         #Add widgets to grid
         grid.addWidget(map_Viewer,1,7,4,5)
         grid.addWidget(world_heading,1,7,1,5)
-        grid.addWidget(newEntryBox,4,1,2,5)
-        grid.addWidget(submitButton,6,5,1,1)
+        grid.addWidget(self.comboBox,3,1,1,1)
+        grid.addWidget(self.newPageTitle,4,1,1,2)
+        grid.addWidget(self.newEntryBox,5,1,2,5)
+        grid.addWidget(submitButton,7,5,1,1)
         

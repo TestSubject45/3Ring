@@ -1,8 +1,8 @@
 print("Loading source files...")
-from funcs import *
 from gui_main import *
-print("Finished loading source files.")
-
+from funcs import *
+print("Finished loading source files.\n")
+from config import *
 
 if __name__== '__main__':
 	print("Creating App...")
@@ -13,8 +13,8 @@ if __name__== '__main__':
 	print("Creating window...")
 	mainWindow = MainWindow()
 	print("done.")
-	
 
 	print("Starting Loop...")
 	sys.exit(app.exec_())
+	writeToFile("data/pagesList","csv",pagesList)
 	print("Exiting...")
