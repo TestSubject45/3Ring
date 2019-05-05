@@ -11,8 +11,21 @@ from funcs import *
 class Noun(QWidget):
 
     def refresh(self):
-
+        global pagesList
+        
         self.page_name.setText('<p style="font-size:28px;">'+str(self.page_widget.currentItem().text())+'</p>')
+
+        pageWidgetCount = self.page_widget.count()
+        pageListCount = len(pagesList[findNounIndex(self.name)])
+        #refresh page list
+        # print(self.name)
+        # print("Page Widget Count "+str(pageWidgetCount))
+        # print("Page List Count "+str(pageListCount))
+        # print()
+
+        if(pageWidgetCount!=pageListCount):
+            loadPagesIntoList(self,True)    
+
 
     def __init__(self,title):
         super().__init__()
