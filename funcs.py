@@ -1,6 +1,7 @@
 print("Loading functions...")
 from config import *
 import csv
+import glob
 
 
 def changeNoun(self,index):
@@ -90,6 +91,17 @@ def loadPagesIntoList(self,refresh=False):
 
 	self.page_widget.setCurrentRow(0)
 
+def importPages(self):
+	global nounList
+	global pagesList
+
+	for item in nounList:
+		fileList = glob.glob("data/"+item+"/*.txt")
+		for page in fileList:
+			page = page.split('/')[2][0:len(page.split('/')[2])-4]
+			pagesList[findNounIndex(item)].append(page)
+			# print(page.split('/')[2][0:len(page.split('/')[2])-4])
+	
 loadPagesFromFile()
 print("Functions Loaded")
 

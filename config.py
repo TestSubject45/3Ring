@@ -7,9 +7,9 @@ nounList = ['Dashboard','Characters','Items','Locations','Concepts']
 global pagesList
 pagesList = [
 	["Dashboard"],
-	["Characters","Aziel","Frankfurt"],
-	["Items","ROd of sun","ROd of Son","Rod, son of dave"],
-	["Locations","GatesWatch"],
+	["Characters",],
+	["Items",],
+	["Locations"],
 	["Concepts"],
 	["Events"],
 ]
