@@ -2,6 +2,7 @@ print("Loading functions...")
 from config import *
 import csv
 import glob
+import random
 
 
 def changeNoun(self,index):
@@ -101,6 +102,19 @@ def importPages(self):
 			page = page.split('/')[2][0:len(page.split('/')[2])-4]
 			pagesList[findNounIndex(item)].append(page)
 			# print(page.split('/')[2][0:len(page.split('/')[2])-4])
+
+
+def sendAnalytics():
+	try:
+		mailChimpID = readFromFile("resources/mailChimpKey","txt")
+		print("User ID: "+str(mailChimpID))
+	except FileNotFoundError as e:
+		mailChimpID = random.randint(1000000000,9999999999)
+		writeToFile("resources/mailChimpKey",txt,mailChimpID)
+
+
+
+
 loadPagesFromFile()
 print("Functions Loaded")
 

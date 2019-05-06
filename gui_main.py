@@ -52,6 +52,8 @@ class MainWindow(QMainWindow):
 		toolsMenu = mainMenu.addMenu('Tools')
 		nounsMenu = mainMenu.addMenu('Nouns')
 
+
+#FILE MENU
 		importButton = QAction(QIcon('exit24.png'),"Import",self)
 		importButton.triggered.connect(lambda: importPages(self))
 		fileMenu.addAction(importButton)
@@ -60,6 +62,12 @@ class MainWindow(QMainWindow):
 		exitButton.triggered.connect(self.close)
 		fileMenu.addAction(exitButton)
 
+#TOOLS MENU
+		# analyticsButton = QAction(QIcon('exit24.png'), 'Send Analytics', self)
+		# analyticsButton.triggered.connect(lambda: sendAnalytics())
+		# toolsMenu.addAction(analyticsButton)
+
+#NOUNS MENU
 		dashboardButton = QAction(QIcon('exit24.png'),nounList[0],self)
 		dashboardButton.triggered.connect(lambda: changeNoun(self,0))
 		nounsMenu.addAction(dashboardButton)
