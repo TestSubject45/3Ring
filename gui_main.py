@@ -25,6 +25,7 @@ class MainWindow(QMainWindow):
 
 		self.InitNouns() 
 		self.InitMenu()
+		importPages(self)
 
 	def InitNouns(self):	
 		dashboard = Dashboard()
@@ -51,6 +52,10 @@ class MainWindow(QMainWindow):
 		toolsMenu = mainMenu.addMenu('Tools')
 		nounsMenu = mainMenu.addMenu('Nouns')
 
+		importButton = QAction(QIcon('exit24.png'),"Import",self)
+		importButton.triggered.connect(lambda: importPages(self))
+		fileMenu.addAction(importButton)
+
 		exitButton = QAction(QIcon('exit24.png'), 'Exit', self)
 		exitButton.triggered.connect(self.close)
 		fileMenu.addAction(exitButton)
@@ -74,6 +79,7 @@ class MainWindow(QMainWindow):
 		conceptsButton = QAction(QIcon('exit24.png'),nounList[4],self)
 		conceptsButton.triggered.connect(lambda: changeNoun(self,4))
 		nounsMenu.addAction(conceptsButton)
+
 
 		# eventsButton = QAction(QIcon('exit24.png'),nounList[5],self)
 		# eventsButton.triggered.connect(lambda: changeNoun(self,5))

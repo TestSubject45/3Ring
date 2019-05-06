@@ -101,7 +101,6 @@ def importPages(self):
 			page = page.split('/')[2][0:len(page.split('/')[2])-4]
 			pagesList[findNounIndex(item)].append(page)
 			# print(page.split('/')[2][0:len(page.split('/')[2])-4])
-	
 loadPagesFromFile()
 print("Functions Loaded")
 
